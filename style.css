@@ -1,0 +1,400 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+@font-face {
+    font-family: font1a;
+    src: url(./fonts/Black.otf);
+}
+
+@font-face {
+    font-family: font2a;
+    src: url(./fonts/Bold.otf);
+}
+
+@font-face {
+    font-family: font3a;
+    src: url(./fonts/Book.otf);
+}
+
+@font-face {
+    font-family: font4a;
+    src: url(./fonts/Light.otf);
+}
+
+@font-face {
+    font-family: font5a;
+    src: url(./fonts/Medium.otf);
+}
+
+@font-face {
+    font-family: font6a;
+    src: url(./fonts/Semibold.otf);
+}
+
+@font-face {
+    font-family: font1b;
+    src: url(./fonts/BlackItalic.otf);
+}
+
+@font-face {
+    font-family: font2b;
+    src: url(./fonts/BoldItalic.otf);
+}
+
+@font-face {
+    font-family: font3b;
+    src: url(./fonts/BookItalic.otf);
+}
+
+@font-face {
+    font-family: font4b;
+    src: url(./fonts/LightItalic.otf);
+}
+
+@font-face {
+    font-family: font5b;
+    src: url(./fonts/MediumItalic.otf);
+}
+
+@font-face {
+    font-family: font6b;
+    src: url(./fonts/SemiboldItalic.otf);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+#main {
+    background-color: #000;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+#loader {
+    height: 100vh;
+    width: 100%;
+    background-color: #F5E41B;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 10;
+}
+
+#loader > h1 {
+    text-align: center;
+    font-size: 6.75vmax;
+    line-height: 4.75vmax;
+    letter-spacing: -3px;
+    width: 80%;
+    font-family: font4b;
+    font-weight: 100;
+    color: #fff;
+    position: relative;
+    z-index: 5;
+    text-shadow: 0px 0px 10px #0000006c;
+}
+
+#loader > h1 > span {
+    font-family: font4a;
+}
+
+#overlay {
+    height: 100%;
+    width: 100%;
+    background-color: #F5E41B;
+    position: absolute;
+    z-index: 6;
+}
+
+#loader > video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: 4;
+}
+
+#nav {
+    position: absolute;
+    padding: 1.75vmax 3vmax;
+    z-index: 2;
+    width: 100%;
+}
+
+#page1 {
+    height: 100vh;
+    width: 100%;
+    background-color: #F5E41B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#page1 > h1 {
+    text-align: center;
+    font-size: 6.75vmax;
+    line-height: 4.75vmax;
+    letter-spacing: -3px;
+    width: 80%;
+    font-family: font4b;
+    font-weight: 100;
+}
+
+#page1 > h1 > span {
+    font-family: font4a;
+}
+
+#page2 {
+    height: 100vh;
+    width: 100%;
+    background-color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    transition: 0.5s;
+    background-size: cover;
+    background-position: center;
+}
+
+.elem {
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+}
+
+.elem h1 {
+    font-size: 6.75vmax;
+    line-height: 5vmax;
+    font-family: font4a;
+    font-weight: 100;
+    color: #fff;
+    position: relative;
+    z-index: 10;
+    transition: color 0.8s;
+}
+
+.blur {
+    position: absolute;
+    width: 35%;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #F5E41B;
+    box-shadow: 30px 0px 50px 50px #F5E41B, -30px 0px 50px 50px #F5E41B;
+    z-index: 9;
+}
+
+.moving {
+    background-color: #F5E41B;
+    width: 100%;
+    white-space: nowrap;
+    position: absolute;
+    top: 55%;
+    transform: translate(0%, -50%) scaleY(0);
+    transition: 0.4s;
+    overflow: hidden;
+}
+
+.moving-in {
+    display: inline-block;
+    white-space: nowrap;
+    animation-name: movingAnimation;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.moving-in > p {
+    font-weight: 600;
+    font-size: 0.8vmax;
+    color: #000;
+    display: inline-block;
+    margin: 0.2vmax 1vmax;
+    opacity: 0;
+    transition: 0.4s;
+    transition-delay: 0.25s;
+}
+
+@keyframes movingAnimation {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.elem:hover .moving {
+    transform: translate(0%, -50%) scaleY(1);
+}
+
+.elem:hover .moving .moving-in p {
+    opacity: 1;
+}
+
+.elem:hover h1 {
+    font-style: italic;
+    color: #000;
+}
+
+#page3 {
+    min-height: 100vh;
+    width: 100%;
+    background-color: #FFFFFF;
+}
+
+.image-container {
+    padding: 1vmax;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.image-div {
+    width: 30vmax;
+    position: relative;
+    overflow: hidden;
+    margin: 1.75vmax 0vmax;
+}
+
+.image-div > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1vmax;
+    opacity: 0.1;
+    transition: 0.3s;
+    z-index: 11;
+}
+
+.overlay > p {
+    color: #fff;
+    font-size: 2.5vmax;
+    font-family: font4a;
+    line-height: 2.5vmax;
+    text-align: center;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: 0.3s;
+    transition-delay: 0.15s;
+}
+
+.overlay > p > span {
+    font-family: font4b;
+}
+
+.image-div:hover .overlay {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.image-div:hover .overlay p {
+    opacity: 1;
+}
+
+.image-div:hover img {
+    transform: scale(1.25);
+}
+
+#footer {
+    width: 100%;
+    height: 15vmax;
+}
+
+#footer-top {
+    height: 50%;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#to-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.4vmax;
+    cursor: pointer;
+}
+
+#to-top > i {
+    font-size: 1.3vmax;
+}
+
+#to-top > p {
+    font-size: 0.8vmax;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#footer-bottom {
+    height: 50%;
+    width: 100%;
+    background-color: #000;
+    display: flex;
+}
+
+#footer-bottom p {
+    color: #fff;
+    font-size: 0.9vmax;
+    cursor: pointer;
+    position: relative;
+}
+
+#footer-bottom p::after {
+    content: "";
+    background-color: #fff;
+    width: 100%;
+    height: 10%;
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    transform: scaleX(0);
+    transition: 0.3s;
+}
+
+#footer-bottom p:hover::after {
+    transform: scaleX(1);
+}
+
+#foot-left, #foot-right {
+    height: 100%;
+    width: 50%;
+    padding: 0vmax 3vmax;
+    display: flex;
+    align-items: center;
+}
+
+#foot-left {
+    justify-content: flex-start;
+}
+
+#foot-right {
+    justify-content: flex-end;
+    gap: 3vmax;
+}
